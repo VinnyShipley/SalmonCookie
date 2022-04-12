@@ -1,49 +1,56 @@
 'use strict';
 
-//Seattle Info
-let seattleArray = [];
+
 
 let timeArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
 
+//Seattle Info
+let seattleArray = [];
+
 const seattle = {
   name : 'Seattle',
-  minCookie : 23,
-  maxCookie : 65,
-  avgCookie : 6.3,
+  minCust : 23,
+  maxCust : 65,
+  avgCookiePerCust : 6.3,
 }
 
-//Gets avg cookie per hour
-function seattleSales(){
-  let span = seattle.maxCookie - seattle.minCookie;
-  let range = Math.floor(Math.random()*span)+seattle.minCookie;
-  let cookieSales = range*seattle.avgCookie;
+
+//Gets avg cookie per hour. Put in the seattle object
+function seattleHourlyCookiesSold(){
+  let span = seattle.maxCust - seattle.minCust;
+  let range = Math.floor(Math.random()*span)+seattle.minCust;
+  let cookieSales = range*seattle.avgCookiePerCust;
   return Math.floor(cookieSales);
 }
 
-//puts the cookies per hour in the array
-function seattleHourly(){
+//puts the cookies per hour in the array. Put it into the seattle object
+function seattleCookieHourly(){
   for (let i = 0; i <= 13; i++){
-    seattleArray.push(seattleSales());
+    seattleArray.push(seattleHourlyCookiesSold());
     console.log(seattleArray);
     } 
 }
 
-seattleHourly();
+//Invokes seattleHourly function
+seattleCookieHourly();
 
 
-//Lines 33-56 get a list with both the time and seattleHourly printed, but still needs sum value of seattleArray
+//The next 22 lines get a list with both the time and seattleCookieHourly printed, but still needs sum value of seattleArray. Put all in it's own object
+
+//get on screen
 const cityContainer = document.getElementById('cityEstimates');
 
+//article
 const article = document.createElement('article');
 cityContainer.appendChild(article);
 
+//heading
 const header = document.createElement('h2');
 article.appendChild(header);
-
 header.textContent = `${seattle.name}`;
 
+//unoredered list element
 const ul = document.createElement('ul');
-
 article.appendChild(ul);
 
 //builds list on page of time and seattleHourly
@@ -54,6 +61,11 @@ for (let i = 0; i < seattleArray.length; i++){
     li.textContent = `${timeArray[i]}: ${seattleArray[i]} cookies`
   }
 }
+
+//total sales
+const li = document.createElement('li');
+ul.appendChild(li)
+li.textContent = 'Total ' + 
 
 
 // for (let i = 0 )
