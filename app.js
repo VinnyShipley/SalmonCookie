@@ -31,7 +31,7 @@ function seattleHourly(){
 seattleHourly();
 
 
-//Lines 33-51 set up the Seattle Section as far as the li without text contained
+//Lines 33-56 get a list with both the time and seattleHourly printed, but still needs sum value of seattleArray
 const cityContainer = document.getElementById('cityEstimates');
 
 const article = document.createElement('article');
