@@ -8,9 +8,11 @@ function CookieStand(name, minCustAllDay, maxCustAllDay, avgCookiePerGuest) {
   this.avgCookiePerGuest = avgCookiePerGuest;
   this.custPerHour = this.generateCustPerHour();
   this.cookiesSoldDailyArray = this.generateCookiesPerHour();
+  // this.totalCookieByLocation();
 }
 
-
+//the starting value for the total 
+// let totalCookiesByLoc = 0;
 
 //list of times
 let timeArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
@@ -30,6 +32,7 @@ CookieStand.prototype.generateCookiesPerHour = function () {
   for (let i = 0; i < timeArray.length; i++){
     singleHourCookieSales = Math.ceil(this.generateCustPerHour() * this.avgCookiePerGuest);
     cookieHourlyArray.push(singleHourCookieSales);}
+
   return cookieHourlyArray;
 }
 
