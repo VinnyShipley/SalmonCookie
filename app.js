@@ -1,41 +1,41 @@
-'use strict'
+ 'use strict'
 
 //Constructor function
-function City (name, minCustAllDay, maxCustAllDay, avgCookiePerGuest){
+function CookieStand(name, minCustAllDay, maxCustAllDay, avgCookiePerGuest) {
   this.name = name;
   this.minCustAllDay = minCustAllDay;
   this.maxCustAllDay = maxCustAllDay;
   this.avgCookiePerGuest = avgCookiePerGuest;
   this.custPerHour = this.generateCustPerHour();
-  this.randcookiePerHour = this.cookiePerHour();
-  this.cookiesSoldDailyArray = [];
+  this.cookiesSoldDailyArray = this.generateCookiesPerHour();
 }
+
+
 
 //list of times
 let timeArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 //returns the random range of customers per day
-City.prototype.generateCustPerHour = function(){
-    let span = this.maxCustAllDay - this.minCustAllDay;
-    let range = Math.ceil(Math.random()*span + this.minCustAllDay);
-    return range;
+CookieStand.prototype.generateCustPerHour = function () {
+  let span = this.maxCustAllDay - this.minCustAllDay;
+  let range = Math.ceil((Math.random() * span) + this.minCustAllDay);
+  return range;
 }
+
 
 //returns cookies sold per hour
-City.prototype.cookiePerHour = function (){
-  let cookieSoldHourly = Math.ceil(this.custPerHour*this.avgCookiePerGuest);
-  return cookieSoldHourly;
+CookieStand.prototype.generateCookiesPerHour = function () {
+  let singleHourCookieSales;
+  let cookieHourlyArray = [];
+  for (let i = 0; i < timeArray.length; i++){
+    singleHourCookieSales = Math.ceil(this.generateCustPerHour() * this.avgCookiePerGuest);
+    cookieHourlyArray.push(singleHourCookieSales);}
+  return cookieHourlyArray;
 }
 
-//returns array of cookie hourly sold. needs fixing, only displaying one number
-City.prototype.cookiePerDay = function (){
-  for (let i=0; i <= 13; i++){
-    this.cookiesSoldDailyArray.push(this.cookiePerHour());
-  }
-}
 
 //Rendered text on page
-//links to cityEstimates in sales.html
+//links to CookieStandEstimates in sales.html
 const containerElem = document.getElementById('cityEstimates');
 
 //creates table element
@@ -49,95 +49,52 @@ tableElem.appendChild(timeRowElem);
 //prints to screen the time slots
 const timeRowHeading = document.createElement('th');
 timeRowElem.appendChild(timeRowHeading);
-for(let i = 0; i<timeArray.length; i++){
-  const timeRowContent = document.createElement('td')
-  timeRowHeading.appendChild(timeRowContent);
+
+//creates spaceholder cell so that the table lines up with itself
+const spaceHolderCell = document.createElement('td');
+tableElem.appendChild(spaceHolderCell);
+
+for (let i = 0; i < timeArray.length; i++) {
+  const timeRowContent = document.createElement('td');
+  tableElem.appendChild(timeRowContent);
   timeRowContent.textContent = `${timeArray[i]}`;
 };
+
+
+//looping text render
+CookieStand.prototype.render = function(){
+  const newDataRow = document.createElement('tr');
+  tableElem.appendChild(newDataRow);
+  //CookieStand Name row
+  const cityCell = document.createElement('td');
+  newDataRow.appendChild(cityCell);
+  cityCell.textContent = `${this.name}`;
+
+  //loop that prints the hourly sale of each location (unsummed), to the table
+  for(let i = 0; i < timeArray.length; i++){
+    const salesCellValues = document.createElement('td');
+    newDataRow.appendChild(salesCellValues);
+    salesCellValues.textContent = `${this.cookiesSoldDailyArray[i]}`
+  }
+}
+
 
 //creates the cookie sales per hour row
 const salesRowElem = document.createElement('tr');
 tableElem.appendChild(salesRowElem);
 
-//prints to screen the name of the city
+//creates heading for sales row
+const salesRowHeading = document.createElement('th');
+salesRowElem.appendChild(salesRowHeading);
 
-const cityRowHeading = document.createElement('th');
-  salesRowElem.appendChild(cityRowHeading);
+const seattle = new CookieStand('Seattle', 23, 65, 6.3);
+const tokyo = new CookieStand('Tokyo', 3, 24, 1.2);
+const dubai = new CookieStand('Dubai', 11, 38, 3.7);
+const paris = new CookieStand('Paris', 20, 38, 2.3)
+const lima = new CookieStand('Lima', 2, 16, 4.6)
 
-for(let i = 0; i<timeArray.length; i++){
-  const cityRowContent = document.createElement('td');
-  cityRowHeading.appendChild(cityRowContent);
-  cityRowContent.textContent = `${`random`}`;
-}
-
-
-
-
-
-
-
-
-
-
-
-// const containerElem = document.getElementById('cityEstimates');
-// const articleElem = document.createElement('article');
-// containerElem.appendChild(articleElem);
-
-// //Whole table element
-// const tableElem = document.createElement('table');
-// articleElem.appendChild(tableElem);
-
-
-// //table body element where daily raw data is stored
-// const tableBody = document.createElement('th');
-// tableElem.appendChild(tableBody);
-
-// //header of the time table row
-// const timeTableHeader = document.createElement('th');
-// articleElem.appendChild(timeTableHeader);
-
-
-
-// //creates the time row of table/ prints it to page
-// for(let i = 0; i < timeArray.length; i++){
-//   const timeHeaderRow = document.createElement('td');
-//   timeTableHeader.appendChild(timeHeaderRow);
-//   timeHeaderRow.textContent = `${timeArray[i]}`;
-// }
-
-
-// //creates row that the sales values will go into
-// const newDataRow = document.createElement('tr');
-// tableElem.appendChild(newDataRow);
-
-
-
-// //looping text render
-// City.prototype.render = function(){
-  
-//   //City Name row
-//   const headingElem = document.createElement('h2');
-//   timeTableHeader.appendChild(headingElem);
-//   timeTableHeader.textContent = `${this.name}`;
-
-//   //cookies sold hourly row 
-//   for(let i = 0; i < timeArray.length; i++){
-//     const newDataRow = document.createElement('td');
-//     tableBody.appendChild(newDataRow);
-//     newDataRow.textContent = this.cookiesSoldDailyArray[i];
-//   }
-  
-
-
-//}
-
-
-const seattle = new City ('Seattle', 23, 65, 6.3);
-const tokyo = new City ('Tokyo', 3, 24, 1.2);
-
-
-seattle.cookiePerDay();
-// seattle.render();
-// tokyo.cookiePerDay();
-// tokyo.render();
+seattle.render();
+tokyo.render();
+dubai.render();
+paris.render();
+lima.render();
