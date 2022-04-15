@@ -11,9 +11,6 @@ function CookieStand(name, minCustAllDay, maxCustAllDay, avgCookiePerGuest) {
   // this.totalCookieByLocation();
 }
 
-//the starting value for the total 
-// let totalCookiesByLoc = 0;
-
 //list of times
 let timeArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
@@ -57,6 +54,7 @@ timeRowElem.appendChild(timeRowHeading);
 const spaceHolderCell = document.createElement('td');
 tableElem.appendChild(spaceHolderCell);
 
+//creates the time of day row
 for (let i = 0; i < timeArray.length; i++) {
   const timeRowContent = document.createElement('td');
   tableElem.appendChild(timeRowContent);
