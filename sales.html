@@ -2,13 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Sales Info</title>
+  <link href="css/sales-style.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Sales</h1>
-  <div id='cityEstimates'>
+  <div id="salesTable">
+    <div id="title">
+      <h1>Sales Estimates</h1>
+      <h2><a href="index.html">Back to Home Page</a></h2>
+    </div>
+    <fieldset>
+      <h3>New Location</h3>
+      
+      <form id="newCityInput">
+      <label for="cityname">Location:</label>
+        <input type="text" name="cityname" id="cityname">
+     
+
+      <label for="minCust">Min. Customers Per Hour:</label>
+        <input type="number" name="minCust" id="minCust">
+     
+
+      <label for="maxCust">Max. Customers Per Hour:</label>
+        <input type="number" name="maxCust" id="maxCust">
+   
+
+      <label for="avgCookiePerGuest">Average Cookies Per Guest</label>
+        <input type="number" name="avgCookiePerGuest" id="avgCookiePerGuest" step=.1>
+
+      <button>Submit</button>
+      </form>
+    </fieldset>
+    <div id='cityEstimates'>
+      <script src="app.js"></script>
+    </div>
+  </div>     
     
-  </div>
-  <script src="app.js"></script>
+    
 </body>
 </html>
