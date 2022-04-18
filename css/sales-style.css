@@ -14,13 +14,17 @@ h1{
   font-family: 'Roboto Slab', serif;
 }
 
+h2{
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.6em ;
+}
+
 h3{
   font-family: 'Roboto Slab', serif;
 }
 
 td{
   border: 2px black solid;
-  border-radius: .3em;
   font-size: 2em;
 }
 
