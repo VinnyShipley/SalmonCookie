@@ -1,0 +1,47 @@
+body{
+  background-color: beige;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+header{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  background-color: brown;
+  border-radius: 25px;
+  border: 3px solid black;
+}
+
+#nav{
+  display: flex;
+  justify-content: space-around;
+  font-size: 2em;
+}
+
+#images{
+  display: flex;
+  flex-direction: column;
+  border: 2px dashed black;
+  align-items: center;
+  flex-wrap: wrap;
+  border-radius: 25px;
+  
+}
+
+img{
+  max-width: fit-content;
+  padding-bottom: 1em;
+}
+
+h2{
+  text-align: center;
+}
+
+h3{
+  font-size: 2em;
+}
+
+h2{
+  font-size: 2.3em;
+}
