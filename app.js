@@ -91,25 +91,25 @@ CookieStand.prototype.render = function(){
 }
 
 //adds cell above the daily totals
- const labelOfTotalByLocationPerDayColumn = document.createElement('td');
-timeRowElem.appendChild(labelOfTotalByLocationPerDayColumn);
-labelOfTotalByLocationPerDayColumn.textContent = `totals`;
+//  const labelOfTotalByLocationPerDayColumn = document.createElement('td');
+// timeRowElem.appendChild(labelOfTotalByLocationPerDayColumn);
+// labelOfTotalByLocationPerDayColumn.textContent = `totals`;
 
 //creates row that total by hour at location will live in
 const totalRowElem = document.createElement('tr');
 tableElem.appendChild(totalRowElem);
 
 //creates blank spaceholder cell for total by hourly row 
-const hourlyPlaceholderCell = document.createElement('td');
-totalRowElem.appendChild(hourlyPlaceholderCell);
+// const hourlyPlaceholderCell = document.createElement('td');
+// totalRowElem.appendChild(hourlyPlaceholderCell);
 
 
-//populates the total by hour row
-for (let i = 0; i < timeArray.length; i++){
-const hourlyTotalCell = document.createElement('td');
-totalRowElem.appendChild(hourlyTotalCell);
-hourlyTotalCell.textContent = `Hourly Totals Needed`;
-}
+// //populates the total by hour row. Still needs funstionality work as well as appending work to put it below the sales cells rather than above
+// for (let i = 0; i < timeArray.length; i++){
+// const hourlyTotalCell = document.createElement('td');
+// totalRowElem.appendChild(hourlyTotalCell);
+// hourlyTotalCell.textContent = `Hourly Totals Needed`;
+// }
 
 let cookieStands = [];
 
